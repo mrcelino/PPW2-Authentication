@@ -2,6 +2,7 @@
 use App\Http\Controllers\ProtectedController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\admin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,7 +20,9 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
+Route::get('/admin', function () {
+    return view('admin.index');
+})->middleware(admin::class);
 
 
 
