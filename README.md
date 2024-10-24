@@ -24,10 +24,14 @@ composer install
 php artisan key:generate
 ```
 
-### Langkah 6: Migrate database
+### Langkah 6: Migrate database dan Jalankan Seeder
 Mulai database server kemudian jalan perintah berikut 
 ```bash
 php artisan migrate
+```
+Jalankan seeder
+```bash
+php artisan db:seed --class=UserSeeder
 ```
 
 ### Langkah 7: Konfigurasi Vite
