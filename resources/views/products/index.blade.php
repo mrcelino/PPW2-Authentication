@@ -1,8 +1,9 @@
 @extends('products.layout')
      
 @section('content')
+
 <div class="card mt-5">
-  <h2 class="card-header">Tugas PPW Pertemuan 11 - File Upload</h2>
+  <h2 class="card-header">Tugas PPW CRUD Image and Display Gallery</h2>
   <div class="card-body">
           
         @session('success')
