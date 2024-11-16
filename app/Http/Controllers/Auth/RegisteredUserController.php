@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use App\Jobs\SendRegistrationEmail; // Ini untuk memastikan lokasi job
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -42,6 +42,8 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+
+        SendRegistrationEmail::dispatch($user);
 
         Auth::login($user);
 
