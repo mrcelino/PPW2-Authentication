@@ -8,14 +8,59 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
-  
+
+/**
+ * @OA\Info(
+ *     title="API Gallery",
+ *     version="1.0.0",
+ *     description="API Gallery",
+ *     @OA\Contact(
+ *         email="contact@domainanda.com"
+ *     )
+ * )
+ */
 class ProductController extends Controller
 {
+        // Metode untuk menampilkan produk dalam API (JSON)
+    /**
+     * @OA\Get(
+     *     path="/api/products",
+     *     summary="Get product gallery data",
+     *     tags={"Gallery"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="List of products as gallery",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="current_page", type="integer", example=1),
+     *             @OA\Property(property="data", type="array",
+     *                 @OA\Items(
+     *                     @OA\Property(property="id", type="integer", example=1),
+     *                     @OA\Property(property="name", type="string", example="Product Name"),
+     *                     @OA\Property(property="detail", type="string", example="Product description"),
+     *                     @OA\Property(property="image", type="string", example="http://example.com/product-image.jpg")
+     *                 )
+     *             ),
+     *             @OA\Property(property="total", type="integer", example=10)
+     *         )
+     *     )
+     * )
+     */
     public function index(): View
     {
         $products = Product::latest()->paginate(5);
         return view('products.index',compact('products'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+    public function apiIndex()
+    {
+        $products = Product::latest()->get(); // Ambil semua produk
+        foreach ($products as $product) {
+            $product->image = asset('storage/images/'.$product->image); // Membuat URL lengkap
+        }
+        return response()->json([
+            'data' => $products
+        ]);
     }
   
     public function create(): View

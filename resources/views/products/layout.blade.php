@@ -21,7 +21,7 @@
                 <a class="nav-link active" aria-current="page" href="{{ 'products' }}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{'gallery' }}">Gallery</a>
+                <a class="nav-link" href="/gallery">Gallery</a>
               </li>
             </ul>
             <span class="navbar-text">

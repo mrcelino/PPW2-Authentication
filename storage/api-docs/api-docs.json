@@ -1,0 +1,74 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Gallery",
+        "description": "API Gallery",
+        "contact": {
+            "email": "contact@domainanda.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/gallery": {
+            "get": {
+                "tags": [
+                    "Gallery"
+                ],
+                "summary": "Get product gallery data",
+                "operationId": "f2fcde5ae46c32975a63960f8b4ac8ff",
+                "responses": {
+                    "200": {
+                        "description": "List of products as gallery",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Product Name"
+                                                    },
+                                                    "detail": {
+                                                        "type": "string",
+                                                        "example": "Product description"
+                                                    },
+                                                    "image": {
+                                                        "type": "string",
+                                                        "example": "http://example.com/product-image.jpg"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 10
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Gallery",
+            "description": "Gallery"
+        }
+    ]
+}
