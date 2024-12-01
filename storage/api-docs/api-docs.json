@@ -9,13 +9,13 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/api/gallery": {
+        "/api/products": {
             "get": {
                 "tags": [
                     "Gallery"
                 ],
                 "summary": "Get product gallery data",
-                "operationId": "f2fcde5ae46c32975a63960f8b4ac8ff",
+                "operationId": "1bfaa78d1c2c3848ab8165c5dadcad3e",
                 "responses": {
                     "200": {
                         "description": "List of products as gallery",
